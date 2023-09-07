@@ -74,3 +74,28 @@
    ```
 
 # By effectively displaying form errors, you help users understand what went wrong and provide clear guidance on how to fix their input. This improves the overall user experience of your web application.
+
+
+# some code snippet I saw online
+ {% if form.errors %}
+{% for field in form %}
+{% for error in field.errors %}
+<div class="alert alert-danger">
+<strong>{{ error|escape}}</strong>
+</div>
+{% endfor %}
+{% endfor %}
+{% for error in form.non_field_errors %}
+<div class="alert alert-danger">
+<strong>{{ error|escape }}</strong>
+</div>
+{% endfor %}
+{% endif %}
+
+# Notes
+# 1: You can loop through fields of a form 
+# 2: you can access field erros by doing field.errors
+# 3: you can loop through those field errors and display them
+# 4: you can access non-field errors by doing form.non_field errors
+# 5: you can also loop through them and display them
+# By convention non-field errors are displayed at the top of the form and field ones at the bottom or near the field
