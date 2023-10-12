@@ -23,3 +23,15 @@ unique_queryset = queryset.distinct()
 # In this example, values('field1', 'field2') is used to select specific fields from the model, and then distinct() ensures that only unique 
 # combinations of those fields are returned in the queryset.
 # Remember to replace 'field1' and 'field2' with the actual field names you're interested in.
+
+# creating an empty queryset
+# You can create an empty queryset in Django by using the filter() method with a condition that is guaranteed not to match any records in the database.
+# Here's one way to do it:
+from myapp.models import MyModel
+
+# Create an empty queryset by using a condition that is always False
+empty_queryset = MyModel.objects.filter(pk__in=[])
+
+# Now empty_queryset is an empty queryset
+# In this example, we're using the filter() method with a condition that checks if the primary key (pk) is in an empty list. Since no primary key will ever be in an empty list, this queryset will always be empty.
+# You can also create an empty queryset by chaining multiple filter conditions that can never be met, but the method above is a straightforward and clear way to create an empty queryset.
