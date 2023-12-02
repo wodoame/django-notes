@@ -68,6 +68,31 @@ AUTHENTICATION_BACKENDS = (
 
 from django.contrib.auth.decorators import login_required
 
+
 @login_required(login_url='login')
 def protected_view(request):
     # Your view logic here
+ 
+# Using the logout function 
+# In your views or wherever you handle user actions, you can manually call the logout function:
+
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+
+def logout_view(request):
+    logout(request)
+    # Redirect to a page after logout, or wherever you want
+    return redirect('home')
+
+# Then, in your urls file:
+from django.urls import path
+from .views import logout_view
+
+urlpatterns = [
+    # ... your other URL patterns ...
+    path('logout/', logout_view, name='logout'),
+]
+
+# Choose the method that fits your project structure and preferences.
+# Both methods will effectively log the user out by destroying their session and redirecting them to the specified page.
+
