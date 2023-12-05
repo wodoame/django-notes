@@ -32,6 +32,9 @@ from myapp.models import MyModel
 # Create an empty queryset by using a condition that is always False
 empty_queryset = MyModel.objects.filter(pk__in=[])
 
+# I found another way which is: 
+empty_queryset = MyModel.objects.none() # This is the recommended way because .none() method was made for this purpose
+
 # Now empty_queryset is an empty queryset
 # In this example, we're using the filter() method with a condition that checks if the primary key (pk) is in an empty list. Since no primary key will ever be in an empty list, this queryset will always be empty.
 # You can also create an empty queryset by chaining multiple filter conditions that can never be met, but the method above is a straightforward and clear way to create an empty queryset.
