@@ -141,3 +141,46 @@ python manage.py migrate
 Run the development server and test the file upload process by navigating to `http://localhost:8000/upload/` in your browser.
 
 Remember to handle file types appropriately based on your application's requirements and security considerations. Additionally, consider adding validation and error handling to enhance the robustness of your file upload functionality.
+
+# Methods that can be called on a FileField object
+
+In Django, the `FileField` is a field used to upload files. When you define a `FileField` in a Django model, you get access to various methods and attributes associated with this field. Here are some common methods that can be called on a `FileField` object:
+
+1. **`save(name, content, save=True)`**: This method is used to save the file associated with the `FileField`. It takes a `name` (the name of the file), `content` (the file content as a File object), and an optional `save` parameter to control whether the model instance should be saved immediately.
+
+   ```python
+   my_model_instance.my_file_field.save('filename.txt', ContentFile(b'file content'), save=True)
+   ```
+
+2. **`open(mode='rb')`**: Opens the file associated with the `FileField` and returns a file-like object. You can specify the mode (read, write, binary, etc.).
+
+   ```python
+   with my_model_instance.my_file_field.open() as file:
+       content = file.read()
+   ```
+
+3. **`delete(save=True)`**: Deletes the file associated with the `FileField`. It also updates the model instance unless `save` is set to `False`.
+
+   ```python
+   my_model_instance.my_file_field.delete()
+   ```
+
+4. **`url`**: Returns the URL of the file. This is useful for generating links to the file in templates.
+
+   ```python
+   file_url = my_model_instance.my_file_field.url
+   ```
+
+5. **`path`**: Returns the absolute filesystem path to the file. This is not recommended for use in templates but can be useful in some cases.
+
+   ```python
+   file_path = my_model_instance.my_file_field.path
+   ```
+
+6. **`name`**: Returns the name of the file.
+
+   ```python
+   file_name = my_model_instance.my_file_field.name
+   ```
+
+These are some of the common methods you can use with a `FileField` in Django. The actual set of methods available can vary depending on the specific Django version and your storage backend configuration. Always refer to the Django documentation for the version you are using for the most accurate and up-to-date information.
