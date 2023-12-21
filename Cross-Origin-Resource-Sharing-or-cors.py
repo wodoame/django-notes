@@ -29,8 +29,9 @@
    CORS_ALLOWED_ORIGINS = [
        "http://localhost:3000",  # Example: Your frontend app origin
        "https://yourfrontenddomain.com",
-       "*", # for all origins
    ]
+
+  CORS_ALLOW_ALL_ORIGINS = True # to allow all origins
 
    # Optional: Allow credentials (cookies, authorization headers, etc.)
    CORS_ALLOW_CREDENTIALS = True
