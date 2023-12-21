@@ -184,3 +184,25 @@ In Django, the `FileField` is a field used to upload files. When you define a `F
    ```
 
 These are some of the common methods you can use with a `FileField` in Django. The actual set of methods available can vary depending on the specific Django version and your storage backend configuration. Always refer to the Django documentation for the version you are using for the most accurate and up-to-date information.
+
+# Pointing to a different file
+
+If you want to reassign a new file to an existing instance of `MyModel`, you can do something like this:
+
+```python
+# Assuming you have an instance of MyModel
+instance = MyModel.objects.get(pk=1)
+
+# Provide the new file path or content
+new_file_path = "/path/to/new/file.txt"
+
+# Update the file field and save the instance
+instance.file_field.name = new_file_path
+instance.save()
+```
+
+In the example above, we're updating the `name` attribute of the `FileField` with the new file path and then saving the instance. Django will handle the file replacement for you. The file `path` property will be updated to match the new file path you just set `name` to. I know I know it's weird but it works so I just use it as it is.
+
+Remember to handle file deletion properly if the new file is meant to replace the old one completely.
+
+Note: If your use case involves handling file uploads through forms, you might want to look into using Django forms and handling file uploads through form instances. The process might differ slightly depending on your specific requirements and use case.
