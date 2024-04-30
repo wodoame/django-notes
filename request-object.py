@@ -36,7 +36,7 @@
 
     is_ajax = request.is_ajax()
     
-
+# 9. request.headers : Returns the headers
 # These are just a few examples of the methods and attributes available in the `request` object in Django.
 # The specific methods you use will depend on your use case and the information you need from the request.
 # Always refer to the Django documentation for the most up-to-date and detailed information: [Django HttpRequest](https://docs.djangoproject.com/en/3.2/ref/request-response/#httprequest-objects).
