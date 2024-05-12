@@ -20,7 +20,7 @@ In Django, **fixtures** are a way to provide initial data for your models. Let's
      - **Initial Data**: You can also use fixtures to provide initial data when deploying your application.
        - Use the `loaddata` command to load fixtures into your database:
          ```
-         django-admin loaddata <fixture_label>
+         python manage.py loaddata <fixture_label>
          ```
        - Django searches for fixtures in specific locations (e.g., the `fixtures` directory of installed applications or directories listed in `FIXTURE_DIRS`).
 
