@@ -27,20 +27,20 @@ class Book(models.Model):
 #    - A `CheckConstraint` allows you to define custom conditions that must be satisfied for a record to be valid.
 #    - For example, you can create a check constraint to ensure that the `end_date` is always greater than the `start_date` in an `Event` model:
      
-#      from django.db import models
-#      from django.db.models import CheckConstraint, Q, F
+     from django.db import models
+     from django.db.models import CheckConstraint, Q, F
 
-#      class Event(models.Model):
-#          start_date = models.DateTimeField()
-#          end_date = models.DateTimeField()
+      class Event(models.Model):
+          start_date = models.DateTimeField()
+          end_date = models.DateTimeField()
 
-#          class Meta:
-#              constraints = [
-#                  CheckConstraint(
-#                      check=Q(end_date__gt=F('start_date')),
-#                      name='check_start_end_dates'
-#                  )
-#              ]
+          class Meta:
+              constraints = [
+                  CheckConstraint(
+                      check=Q(end_date__gt=F('start_date')),
+                      name='check_start_end_dates'
+                  )
+              ]
      
 #    - In this example, the `check` argument specifies the condition, and the `name` argument provides a unique name for the constraint.
 
