@@ -65,3 +65,41 @@ Certainly! Connecting a PostgreSQL database to your Django application is a comm
 
 That's it! Your Django application should now be connected to the PostgreSQL database. Remember to adjust the settings according to your specific environment and requirements.
 If you prefer an even easier way to connect Django to PostgreSQL, you can use services like [Railway](https://railway.app/) or follow other tutorials.
+
+I encountered a problem where the permissions were denied for my newly created user and I fixed that by changing the owner of `mydb` to `myuser`. 
+There may be other ways to fix this issue but that's what I tried and it worked.
+Ownership plays a crucial role in managing database objects and permissions. By assigning ownership, you ensure that the right user has control over the database and its associated schema, tables, and other objects.
+
+Here's a brief explanation of why setting the owner matters:
+
+1. **Ownership and Permissions**:
+   - In PostgreSQL, each database object (such as tables, views, functions, etc.) has an owner.
+   - The owner is the user who created the object or the user explicitly assigned as the owner.
+   - Ownership determines who can modify or drop the object and who has specific privileges on it.
+
+2. **Database Ownership**:
+   - When you create a new database, the default owner is usually the superuser (`postgres`).
+   - However, it's a good practice to assign ownership to a dedicated user (like your `myuser`) who will manage the database.
+   - By doing so, you avoid using the superuser account for regular operations.
+
+3. **Schema Ownership**:
+   - Each schema within a database also has an owner.
+   - The schema owner controls the objects within that schema.
+   - If you create tables, views, or other objects, they inherit the schema's owner.
+
+4. **Changing Ownership**:
+   - You can change the ownership of a database or schema using SQL commands.
+   - For example, to change the owner of a database:
+     ```sql
+     ALTER DATABASE mydb OWNER TO myuser;
+     ```
+   - To change the owner of a schema:
+     ```sql
+     ALTER SCHEMA public OWNER TO myuser;
+     ```
+
+5. **Security and Maintenance**:
+   - Assigning ownership ensures that the right user can manage the database without relying on the superuser.
+   - Regular maintenance tasks (such as backups, migrations, and updates) become more manageable.
+
+Remember to adjust the ownership settings based on your specific use case and security requirements.
