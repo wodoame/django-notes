@@ -1,0 +1,2 @@
+- Follow the link: [flowbite with django](https://flowbite.com/docs/getting-started/django/)
+- Flowbite is a tailwind component library
