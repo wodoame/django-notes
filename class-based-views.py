@@ -29,6 +29,8 @@ class MyView(View):
 # - **UpdateView:** Handles the updating of existing objects.
 # - **DeleteView:** Handles the deletion of objects.
 
+# Note that you should not inherit from multiple generic views. If you wish to extend the behaviour of a generic view you should inherit from a mixin class
+
 # Here's an example using `ListView`:
 
 from django.views.generic import ListView
@@ -70,3 +72,4 @@ class MyProtectedView(View):
 
 # These are just the basics, and class-based views in Django offer a lot of flexibility and extensibility.
 # Understanding the various built-in generic views and mixins can help you write concise and modular code.
+
