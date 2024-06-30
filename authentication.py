@@ -27,6 +27,17 @@ login(request, user)
 # 5. Once a user is logged in, you can access the user's information using the `request.user` attribute. 
 # You can check if the user is authenticated using `request.user.is_authenticated`.
 
+# you could also use the AuthenticateForm
+from django.contrib.auth.forms import AuthenticateForm
+form = AuthenticateForm(request, request.POST): 
+if form.is_valid():
+ user = form.get_user() # get the authenticated user
+ login(request, user)
+ # do some other stuff
+else: 
+  print(form.errors.as_data())
+  # or do something else
+  
 
 # Django provides a built-in authentication system that includes views, forms, and other utilities for handling user authentication. 
 # To set up authentication using the Django built-in login view, follow these steps:
