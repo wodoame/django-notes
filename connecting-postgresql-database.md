@@ -1,7 +1,7 @@
-Certainly! Connecting a PostgreSQL database to your Django application is a common task. Here are the steps you can follow:
+Connecting a PostgreSQL database to your Django application is a common task. Here are the steps you can follow:
 
 1. **Install PostgreSQL**:
-   - If you're on Windows or macOS, download PostgreSQL from the official site¹ and install it.
+   - If you're on Windows or macOS, download PostgreSQL from the official site and install it.
    - For Linux users, run the following commands to install PostgreSQL and its dependencies:
      ```bash
      sudo apt-get install postgresql postgresql-contrib
